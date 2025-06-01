@@ -15,7 +15,6 @@
 ---
 
 ### ✅ 8. Автор
-```markdown
 ## 👨‍💻 Автор
 Khamid Gaipov  
 Telegram: @ga1pov  
