@@ -22,4 +22,4 @@ Email: gaipovkhamid.uz@gmail.com
 
 ## Swagger UI
 
-![Swagger UI Screenshot](images/swagger)
+![Swagger UI Screenshot](images/swagger.png)
