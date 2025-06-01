@@ -22,4 +22,4 @@ Email: gaipovkhamid.uz@gmail.com
 
 ## Swagger UI
 
-![Swagger UI Screenshot](Desktop/Снимок экрана 2025-06-01 в 18.05.22)
+![Swagger UI Screenshot](images/swagger)
