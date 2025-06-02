@@ -1,6 +1,7 @@
 package com.khamid.Online_Ticket.service;
 
 import com.khamid.Online_Ticket.dto.MovieDto;
+import com.khamid.Online_Ticket.entity.MovieEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public interface MovieService {
     String addMovie(MovieDto dto);
 
-    List<MovieDto> getAllMovies();
+    List<MovieEntity> getAllMovies();
 
-    MovieDto findMovieByName(MovieDto dto);
+    MovieDto findMovieByTitle(String title);
 }
