@@ -14,11 +14,13 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+
 public class MovieServiceImpl implements MovieService {
     @Autowired
     MovieRepository repository;
 
-    private final MovieMapper mapper;
+    @Autowired
+   MovieMapper mapper;
 
     @Override
     public String addMovie(MovieDto dto) {
