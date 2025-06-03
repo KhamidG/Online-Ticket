@@ -19,7 +19,7 @@ public class MovieController {
 
     @Operation(summary = "Add new Movie")
     @PostMapping("/add")
-    private ResponseEntity<String> addNewMovie(@RequestBody MovieDto dto) {
+    public ResponseEntity<String> addNewMovie(@RequestBody MovieDto dto) {
         return ResponseEntity.ok(movieService.addMovie(dto));
     }
 

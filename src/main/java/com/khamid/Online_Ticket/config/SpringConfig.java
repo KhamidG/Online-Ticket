@@ -19,7 +19,14 @@ public class SpringConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/reg", "/api/movie/add", "/api/auth/log", "/api/movie/findByTitle/**", "/api/hall/add", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api/movie/all").permitAll().anyRequest().authenticated()).formLogin(login -> login.disable()).httpBasic(Customizer.withDefaults());
+        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests
+                        (auth -> auth.requestMatchers("/api/auth/reg",
+                                        "/api/movie/add", "/api/auth/log", "/api/movie/findByTitle/**",
+                                        "/api/hall/add", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**",
+                                        "/api/movie/all")
+                                .permitAll().anyRequest().authenticated()).formLogin(
+                        login -> login.disable()).
+                httpBasic(Customizer.withDefaults());
 
         return http.build();
     }

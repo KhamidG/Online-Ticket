@@ -10,7 +10,7 @@ import java.util.List;
 public interface MovieService {
     String addMovie(MovieDto dto);
 
-    List<MovieEntity> getAllMovies();
+    List<MovieDto> getAllMovies();
 
     MovieDto findMovieByTitle(String title);
 }

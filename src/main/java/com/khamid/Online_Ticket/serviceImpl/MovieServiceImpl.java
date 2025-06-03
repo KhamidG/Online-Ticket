@@ -11,16 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 
 public class MovieServiceImpl implements MovieService {
-    @Autowired
-    MovieRepository repository;
-
-    @Autowired
-   MovieMapper mapper;
+    private final MovieRepository repository;
+    private final MovieMapper mapper;
 
     @Override
     public String addMovie(MovieDto dto) {
@@ -37,8 +35,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MovieEntity> getAllMovies() {
-        return repository.findAll();
+    public List<MovieDto> getAllMovies() {
+        return repository.findAll().stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
