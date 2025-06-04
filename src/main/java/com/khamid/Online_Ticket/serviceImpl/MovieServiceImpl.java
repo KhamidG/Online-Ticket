@@ -8,17 +8,18 @@ import com.khamid.Online_Ticket.repository.MovieRepository;
 import com.khamid.Online_Ticket.service.MovieService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
-
 public class MovieServiceImpl implements MovieService {
-    private final MovieRepository repository;
-    private final MovieMapper mapper;
+    @Autowired
+    MovieRepository repository;
+    @Autowired
+    MovieMapper mapper;
 
     @Override
     public String addMovie(MovieDto dto) {
