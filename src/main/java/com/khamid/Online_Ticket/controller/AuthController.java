@@ -22,11 +22,11 @@ public class AuthController {
         return ResponseEntity.ok(authService.registerUser(dto));
     }
 
-    @Operation(summary = "Logging to system")
-    @PostMapping("/log")
-    public ResponseEntity<String> log(@RequestBody AuthDto dto) {
-        return ResponseEntity.ok(authService.loginUser(dto));
-    }
+//    @Operation(summary = "Logging to system")
+//    @PostMapping("/log")
+//    public ResponseEntity<String> log(@RequestBody AuthDto dto) {
+//        return ResponseEntity.ok(authService.loginUser(dto));
+//    }
 
     @Operation(summary = "Change role to ADMIN")
     @PostMapping("/changeRole")

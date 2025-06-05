@@ -9,7 +9,6 @@ import com.khamid.Online_Ticket.service.AuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,9 +18,6 @@ import java.util.Optional;
 public class AuthServiceImpl implements AuthService {
     @Autowired
     ProfileRepository profileRepository;
-    @Autowired
-    BCryptPasswordEncoder bc;
-
     private static final Logger log = LoggerFactory.getLogger(AuthServiceImpl.class);
 
     @Override
@@ -32,7 +28,7 @@ public class AuthServiceImpl implements AuthService {
         AuthEntity authEntity = new AuthEntity();
         authEntity.setFullName(authDto.getFullName());
         authEntity.setEmail(authDto.getEmail());
-        authEntity.setPassword(bc.encode(authDto.getPassword()));
+        authEntity.setPassword(authDto.getPassword());
         authEntity.setCreatedAt(LocalDateTime.now());
         authEntity.setRole(UserRole.ROLE_USER);
 
@@ -43,21 +39,16 @@ public class AuthServiceImpl implements AuthService {
         return "Successfully registered";
     }
 
-    @Override
-    public String loginUser(AuthDto authDto) {
-        if (!login(authDto.getEmail(), authDto.getPassword())) {
-            throw new BadException("Password is wrong");
-        }
-        log.info("User logged: {}", authDto.getEmail());
-        return "Successfully logged in.";
-    }
-
-    public boolean login(String email, String password) {
-        AuthEntity entity = profileRepository.findByEmail(email)
-                .orElseThrow(() -> new BadException("User not found."));
-
-        return bc.matches(password, entity.getPassword());
-    }
+//    @Override
+//    public String loginUser(AuthDto authDto) {
+//        if (!login(authDto.getEmail(), authDto.getPassword())) {
+//            throw new BadException("Password is wrong");
+//        }
+//        log.info("User logged: {}", authDto.getEmail());
+//        return "Successfully logged in.";
+//    }
+//
+//
 
     @Override
     public String changeRole(AuthDto authDto) {
@@ -88,7 +79,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         AuthEntity userEntity = optionalUser.get();
-        userEntity.setPassword(bc.encode(authDto.getPassword()));
+        userEntity.setPassword(authDto.getPassword());
         profileRepository.save(userEntity);
 
         return "Successfully change password. ";
