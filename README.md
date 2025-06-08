@@ -20,6 +20,9 @@
 ## Swagger UI
 ![Swagger UI Screenshot](images/swagger.png)
 
+## Clone
+git clone https://github.com/your-username/online-ticket.git
+cd online-ticket
 ---
 
 Автор
