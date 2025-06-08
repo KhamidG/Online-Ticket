@@ -33,9 +33,6 @@ public class HallServiceImpl implements HallService {
         entity.setColumns(dto.getColumns());
         entity.setSeatCount(dto.getRows() * dto.getColumns());
 
-        if(entity.getName().equals(dto.getName())){
-            throw new BadException("Name is already uses");
-        }
         repository.save(entity);
 
         List<SeatEntity> seats = new ArrayList<>();

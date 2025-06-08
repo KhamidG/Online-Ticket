@@ -20,7 +20,6 @@ public class SeatServiceImpl implements SeatService {
     SeatRepository repository;
 
 
-
     @Override
     public List<SeatEntity> getAllSeats() {
         return repository.findAll();
@@ -40,9 +39,9 @@ public class SeatServiceImpl implements SeatService {
         return "Successfully booking seat.";
     }
 
-    public boolean isBooking(Long seatId, Long hallId) {
+    public boolean isBooking(Long seatId, Long hallId){
         Optional<SeatEntity> optionalSeat = repository.findById(seatId);
-        if (optionalSeat.isEmpty()){
+        if (optionalSeat.isEmpty()) {
             return false;
         }
 
@@ -54,6 +53,35 @@ public class SeatServiceImpl implements SeatService {
         if (seat.getStatus() == BookingStatus.FREE) {
             seat.setStatus(BookingStatus.IS_BOOKING);
             repository.save(seat);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String cancelBooking(Long id, Long hallId) {
+        if (!cancelBookingConcept(id, hallId)){
+            throw new BadException("Seat is not found");
+        }
+
+        return "Your book is successfully canceled.";
+    }
+
+    public boolean cancelBookingConcept(Long seatId, Long hallId) {
+        Optional<SeatEntity> optionalSeat = repository.findById(seatId);
+        if (optionalSeat.isEmpty()){
+            return false;
+        }
+
+        SeatEntity entity = optionalSeat.get();
+        if (!entity.getHall().getId().equals(hallId)){
+            return false;
+        }
+
+        if(entity.getStatus().equals(BookingStatus.IS_BOOKING)){
+            entity.setStatus(BookingStatus.FREE);
+            repository.save(entity);
             return true;
         }
 

@@ -13,4 +13,6 @@ public interface SeatService {
     Optional<SeatEntity> getSeatById(Long id);
 
     String bookSeat(Long seatId, Long hallId);
+
+    String cancelBooking(Long id, Long hallId);
 }
