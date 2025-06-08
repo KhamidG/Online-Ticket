@@ -14,12 +14,15 @@
 
 ---
 
-## 👨‍💻 Автор
+## Архитектура приложение
+![Architecture](images/HELP.png)
+
+## Swagger UI
+![Swagger UI Screenshot](images/swagger.png)
+
+---
+
+Автор
 Khamid Gaipov  
 Telegram: @ga1pov  
 Email: gaipovkhamid.uz@gmail.com
-
-
-## Swagger UI
-
-![Swagger UI Screenshot](images/swagger.png)

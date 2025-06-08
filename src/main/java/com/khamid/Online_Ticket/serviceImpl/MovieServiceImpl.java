@@ -6,9 +6,7 @@ import com.khamid.Online_Ticket.exps.BadException;
 import com.khamid.Online_Ticket.mapper.MovieMapper;
 import com.khamid.Online_Ticket.repository.MovieRepository;
 import com.khamid.Online_Ticket.service.MovieService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
