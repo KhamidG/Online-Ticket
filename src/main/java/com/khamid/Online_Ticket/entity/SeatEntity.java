@@ -19,6 +19,7 @@ public class SeatEntity {
     private Integer columns;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private BookingStatus status;
 
     @ManyToOne

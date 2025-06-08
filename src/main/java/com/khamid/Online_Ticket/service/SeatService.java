@@ -11,4 +11,6 @@ public interface SeatService {
     List<SeatEntity> getAllSeats();
 
     Optional<SeatEntity> getSeatById(Long id);
+
+    String bookSeat(Long seatId, Long hallId);
 }

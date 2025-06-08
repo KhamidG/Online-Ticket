@@ -4,10 +4,7 @@ import com.khamid.Online_Ticket.entity.SeatEntity;
 import com.khamid.Online_Ticket.service.SeatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +24,12 @@ public class SeatController {
     @GetMapping("/byId/{id}")
     private ResponseEntity<Optional<SeatEntity>> getSeatById(@PathVariable("id") Long id) {
         return ResponseEntity. ok(service.getSeatById(id));
+    }
+
+    @PostMapping("/book")
+    public ResponseEntity<String> bookSeat(@RequestParam Long seatId, @RequestParam Long hallId) {
+        String result = service.bookSeat(seatId, hallId);
+        return ResponseEntity.ok(result);
     }
 }
 
